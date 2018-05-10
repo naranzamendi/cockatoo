@@ -3,9 +3,9 @@ import { expect } from 'chai';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
 
-import SearchBox  from '../../website/profiles/component/search/search.jsx'
-import SkillsInput  from '../../website/profiles/component/search/skillsInput.jsx'
-import SearchButton from '../../website/profiles/component/search/searchButton.jsx'
+import SearchBox  from '../../website/profiles/component/searchBox/SearchBox.jsx'
+import SkillsInput  from '../../website/profiles/component/searchBox/component/skillsBox/component/SkillInput.jsx'
+import SearchButton from '../../website/profiles/component/searchBox/component/SearchButton.jsx'
 
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
