@@ -21,6 +21,7 @@ module.exports = {
   "rules": {
     "indent": ["warn", 2],
     "no-unused-vars": "warn",
+    "semi": [1, "always"],
     "react/jsx-closing-bracket-location": 1,
     "react/jsx-indent-props": 1,
     "react/jsx-indent": ["warn", 2],

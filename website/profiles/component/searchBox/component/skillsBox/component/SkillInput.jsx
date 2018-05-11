@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import colors from '../../../../../../css/colors.js'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import colors from '../../../../../../css/colors.js';
 
 export default class SubmitSkillController extends React.Component{
 
   constructor() {
     super();
-    this.state = {skill : ''}
+    this.state = {skill : ''};
   }
 
   refreshSkill = (event) => {
@@ -23,24 +23,23 @@ export default class SubmitSkillController extends React.Component{
     return <SubmitRow>
       <Text placeholder="Type Skill" type="text" onChange={this.refreshSkill} value={this.state.skill} />
       <Button onClick={this.onClick}> &gt; </Button>
-    </SubmitRow>
+    </SubmitRow>;
   }
 
   static propTypes  = {
     skill: PropTypes.string,
     onTextChanged : PropTypes.func,
     onSubmit: PropTypes.func
-  }
-
+  };
 }
 
 const SubmitRow = styled.div`
   display: flex;
   flex-direction: row;
-`
+`;
 
 const Text = styled.input`
-`
+`;
 const Button = styled.button`
   width: 20px;
   height: 20px;
@@ -48,4 +47,4 @@ const Button = styled.button`
   background-color: white;
   border-style: hidden;
   color: ${colors.blue}
-`
+`;

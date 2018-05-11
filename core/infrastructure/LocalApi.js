@@ -6,8 +6,8 @@ class LocalApi {
 
   searchProfiles({skills}) {
     let profilesWithSkills = this.profiles.filter(p => p.hasAnySkill(skills));
-    return Promise.resolve(profilesWithSkills)
+    return Promise.resolve(profilesWithSkills);
   }
 }
 
-export default ({profiles}) => new LocalApi({profiles})
+export default ({profiles}) => new LocalApi({profiles});

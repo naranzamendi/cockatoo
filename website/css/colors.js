@@ -11,4 +11,4 @@ module.exports = {
   blue_light,
   gray_dark,
   gray
-}
+};

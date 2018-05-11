@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import SkillsBox from './component/skillsBox/SkillsBox.jsx'
-import SearchButton from './component/SearchButton.jsx'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import SkillsBox from './component/skillsBox/SkillsBox.jsx';
+import SearchButton from './component/SearchButton.jsx';
 
 const SearchBox = ({skills,onSearchClicked, onSkillsChanged}) =>
   <SearchColumn>
     <SkillsBox skills={skills} onSkillsChanged={onSkillsChanged} />
     <SearchButton onSearchClicked={onSearchClicked} />
-  </SearchColumn>
+  </SearchColumn>;
 
 export default class SearchBoxContainer extends React.Component {
 
@@ -19,8 +19,8 @@ export default class SearchBoxContainer extends React.Component {
 
   refreshSkills = (skills) => {
     this.setState(prevState => {
-        return ({...prevState, skills});
-    })
+      return ({...prevState, skills});
+    });
   }
 
   static propTypes = {
@@ -28,7 +28,7 @@ export default class SearchBoxContainer extends React.Component {
   }
 
   render () {
-    return <SearchBox skills={this.state.skills} onSkillsChanged={this.refreshSkills} onSearchClicked={() => this.props.onSearchClicked(this.state.skills)} />
+    return <SearchBox skills={this.state.skills} onSkillsChanged={this.refreshSkills} onSearchClicked={() => this.props.onSearchClicked(this.state.skills)} />;
   }
 }
 
@@ -36,7 +36,7 @@ SearchBox.propTypes = {
   onSearchClicked : PropTypes.func,
   onSkillsChanged : PropTypes.func,
   skills: PropTypes.array
-}
+};
 
 const SearchColumn = styled.div`
   display: flex;
@@ -44,4 +44,4 @@ const SearchColumn = styled.div`
   align-items: center
   justify-content: space-around;
   width: 300px;
-`
+`;
