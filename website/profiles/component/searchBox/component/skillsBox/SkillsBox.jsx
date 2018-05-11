@@ -7,27 +7,29 @@ import SkillsList from './component/SkillsList.jsx'
 
 export default class SkillsBoxContainer extends React.Component {
 
-  constructor(){
-    super();
-    this.state = { skills: [] }
+  constructor(props){
+    super(props);
   }
 
   addSkill = (skill) => {
     if(skill){
-      this.setState(prevState => ({
-        skills: prevState.skills.concat(skill)
-      }));
+      let skills = this.props.skills.concat(skill);
+      this.props.onSkillsChanged(skills);
     }
   }
 
   removeSkill = (index) => {
-    this.setState(prevState => ({
-      skills: prevState.skills.filter((elem, i) => i != index)
-    }));
+    let skills = this.props.skills.filter((elem, i) => i != index);
+    this.props.onSkillsChanged(skills);
+  }
+
+  static propTypes = {
+    onSkillsChanged : PropTypes.func,
+    skills: PropTypes.array
   }
 
   render() {
-    return <SkillsBox skills={this.state.skills} onSkillSubmitted={this.addSkill} onRemoveSkill={this.removeSkill}/>
+    return <SkillsBox skills={this.props.skills} onSkillSubmitted={this.addSkill} onRemoveSkill={this.removeSkill}/>
   }
 }
 

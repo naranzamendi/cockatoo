@@ -1,9 +1,6 @@
 
-const provideSearchProfiles = ({api}) => {
-  let searchProfile = ({skills}) => {
-    return api().then(profiles => profiles.filter(p => p.hasAnySkill(skills)));
+export default ({api}) => {
+  return ({skills}) => {
+    return api.searchProfiles({skills});
   };
-  return searchProfile;
-}
-
-export default provideSearchProfiles;
+};

@@ -1,6 +1,6 @@
 import chai from 'chai'
-import sinon from 'sinon';
 import provideSearchProfiles from '../../core/actions/searchProfiles'
+import provideApi from '../../core/infrastructure/LocalApi'
 import Profile from '../../core/domain/Profile'
 
 var chaiAsPromised = require("chai-as-promised");
@@ -8,16 +8,11 @@ chai.use(chaiAsPromised);
 let expect = chai.expect;
 
 describe('searchProfiles by skill', () => {
-
-  let api = sinon.stub();
-  let searchProfiles = provideSearchProfiles({api});
-  beforeEach(function() {
-    api.resetBehavior();
-  });
-
   context('when profiles match with skills', () => {
     it('returns profiles array',() => {
-      api.resolves([profile({skills: ['Java']}), profile({skills: ['React']})]);
+      let api = provideApi({profiles:[profile({skills: ['Java']}), profile({skills: ['React']})]});
+      let searchProfiles = provideSearchProfiles({api});
+
       let profiles = searchProfiles({skills : ['Java', 'React']});
       return expect(profiles).to.eventually.have.length(2);
     })
@@ -25,7 +20,9 @@ describe('searchProfiles by skill', () => {
 
   context('when profiles dont match', () => {
     it('returns an empty array', () => {
-      api.resolves([profile({skills: ["Java"]}), profile({skills: ["React"]})]);
+      let api = provideApi({profiles:[profile({skills: ['Java']}), profile({skills: ['React']})]});
+      let searchProfiles = provideSearchProfiles({api});
+
       let profiles = searchProfiles({skills : ["JS"]})
       return expect(profiles).to.eventually.have.length(0);
     })
@@ -33,7 +30,9 @@ describe('searchProfiles by skill', () => {
 
   context('when there are no profiles', () => {
     it('returns an empty array', () => {
-      api.resolves([]);
+      let api = provideApi({profiles:[]});
+      let searchProfiles = provideSearchProfiles({api});
+
       let profiles = searchProfiles({skills : ["Java", "React"]})
       return expect(profiles).to.eventually.have.length(0);
     })
