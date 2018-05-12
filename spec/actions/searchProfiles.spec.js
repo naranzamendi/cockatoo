@@ -1,7 +1,7 @@
 import chai from 'chai';
 import provideSearchProfiles from '../../core/actions/searchProfiles';
 import provideApi from '../../core/infrastructure/LocalApi';
-import Profile from '../../core/domain/Profile';
+import {profile} from '../mother/profileMother';
 
 var chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
@@ -39,7 +39,3 @@ describe('searchProfiles by skill', () => {
   });
 
 });
-
-let profile = (details) => {
-  return new Profile(details);
-};

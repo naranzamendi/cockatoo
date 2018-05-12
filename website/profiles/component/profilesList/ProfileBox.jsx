@@ -12,6 +12,7 @@ const ProfileBox = ({profile}) =>
     </ProfileDescriptionCol>
   </ProfileHeaderRow>;
 
+
 ProfileBox.propTypes = {
   profile: PropTypes.object
 };
